@@ -17,14 +17,13 @@ app.post('/speechify', async (req, res) => {
   res.send('Speechify endpoint');
 });
 
-app.post('/gpt', async (req, res) => {
-  
+app.post('/gpt', async (req, res) => { 
   const inputText = req.body.inputText;
 
   try{
     // Call the ChatGPT API with the input text
-    const chatGptResponse = await openai.Completion.create({
-      engine: 'text-davinci-002',
+    const chatGptResponse = await openai.completions.create({
+      engine: 'davinci-codex',
       prompt: inputText,
       max_tokens: 150,
       n: 1,
