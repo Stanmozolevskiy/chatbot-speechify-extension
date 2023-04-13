@@ -1,5 +1,6 @@
 // this code calls heroku service 
-const SERVER_BASE_URL = "https://your-heroku-app.herokuapp.com";
+//const SERVER_BASE_URL = "https://chatbot-speechify-extension.herokuapp.com/";
+const SERVER_BASE_URL = "http://localhost:3000";
 
 async function chatWithGPT(prompt) {
   const response = await fetch(`${SERVER_BASE_URL}/gpt`, {
@@ -9,7 +10,8 @@ async function chatWithGPT(prompt) {
     },
     body: JSON.stringify({ prompt: prompt }),
   });
-
+  
+  console.log(response)
   const data = await response.json();
   return data;
 }

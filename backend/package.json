@@ -1,0 +1,16 @@
+{
+  "name": "chatgpt-speechify-backend",
+  "version": "1.0.0",
+  "description": "Backend server for ChatGPT and Speechify Chrome extension",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "axios": "^0.21.1"
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}
