@@ -3,12 +3,11 @@ const axios = require('axios');
 const cors = require('cors');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const openai = require('openai');
+const { OpenAIClient } = require('openai');
 const openaiApiKey = process.env.OPENAI_API_KEY;
+const openaiClient = new OpenAIClient(openaiApiKey);app.use(express.json());
 
 
-openai.apiKey = openaiApiKey;
-app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
@@ -22,7 +21,7 @@ app.post('/gpt', async (req, res) => {
 
   try{
     // Call the ChatGPT API with the input text
-    const chatGptResponse = await openai.completions.create({
+    const chatGptResponse =await openaiClient.createCompletion({
       engine: 'davinci-codex',
       prompt: inputText,
       max_tokens: 150,
@@ -30,6 +29,7 @@ app.post('/gpt', async (req, res) => {
       stop: null,
       temperature: 0.5,
     });
+    
     // Extract the generated text from the response
     const chatGptOutput = chatGptResponse.choices[0].text.trim();  
     console.log(chatGptOutput)
