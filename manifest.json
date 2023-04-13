@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "Chatbot with Speechify",
+    "version": "1.0.0",
+    "description": "A chatbot extension that uses GPT and Speechify",
+    "permissions": ["activeTab", "storage"],
+    "browser_action": {
+      "default_icon": "icon.png",
+      "default_popup": "popup.html"
+    },
+    "content_security_policy": "script-src 'self' https://cdn.jsdelivr.net; object-src 'self'",
+    "icons": {
+      "48": "icon.png"
+    }
+  }
